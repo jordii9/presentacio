@@ -15,10 +15,10 @@ pandoc -t html5 --template=template-revealjs.html \
     --standalone --section-divs \
   --variable theme="night" \
   --variable transition="linear" \
-  prova.md -o prova.html
+  presentacio.md -o presentacio.html
 
 
-firefox prova.html &disown
+firefox presentacio.html &disown
 
 # Github oficial https://gist.github.com/aaronwolen/5017084
 

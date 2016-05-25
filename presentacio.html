@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 
-<title></title>
+<title>Projecte 2016</title>
 
-<meta name="description" content="">    
+<meta name="description" content="Projecte 2016">    
 
+  <meta name="author" content="Centralització de logs JSON en BBDD i post-processat" />
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -14,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <link rel="stylesheet" href="css/reveal.css">
-  <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="css/theme/night.css" id="theme">
 
 
 <!-- For syntax highlighting -->
@@ -41,35 +42,53 @@
 <div class="slides">
 
 <section>
-<h1></h1>
-
+<h1>Projecte 2016</h1>
+<h3>Centralització de logs JSON en BBDD i post-processat</h3>
 <p>
-<h4></h4>
+<h4>Jordi Amela</h4>
 </p>
 </section>  
 
 
-<section id="projecte-2016" class="level1">
-<h1>Projecte 2016</h1>
-<section id="centralització-de-logs-json-en-bbdd-i-post-processat" class="level2">
-<h2>Centralització de logs JSON en BBDD i post-processat</h2>
-<p>Jordi Amela</p>
-</section>
+<section id="introducció" class="level1">
+<h1>Introducció</h1>
+<p>A partir de la generació massiva de logs , són processats , guardats en una base de dades i finalment es visualitza.</p>
+<figure>
+<img src="images/esquema.jpg" />
+</figure>
+<hr />
 </section>
 <section id="estructura" class="level1">
 <h1>Estructura</h1>
 <p>Logstash --&gt; Elasticsearch --&gt; Kibana</p>
 <figure>
-<img src="../images/elk2.png" alt="imatge" /><figcaption>imatge</figcaption>
+<img src="images/elk2.png" />
 </figure>
 <hr />
 </section>
 <section id="logstash" class="level1">
 <h1>Logstash</h1>
-<section id="mama" class="level2">
-<h2>mama</h2>
+<section id="fitxer-de-configuració" class="level2">
+<h2>fitxer de configuració</h2>
+<figure>
+<img src="images/logstash_esquema.png" />
+</figure>
+<p><a href="https://github.com/jordii9/projecte/blob/master/configuracions/logstash/logstash.conf">logstash.conf</a></p>
+</section>
+<section id="plugins" class="level2">
+<h2>Plugins</h2>
+<p>són funcionalitats que aporten caracteristiques noves</p>
+<p>Poden ser:</p>
 <ul>
-<li>fitxer de configuració</li>
+<li>defecte</li>
+<li>descargable</li>
+</ul>
+</section>
+<section id="atributs" class="level2">
+<h2>Atributs</h2>
+<ul>
+<li>Valors per defecte</li>
+<li>Obligats (Required)</li>
 </ul>
 <hr />
 </section>
@@ -77,56 +96,125 @@
 <section id="elasticsearch" class="level1">
 <h1>Elasticsearch</h1>
 <ul>
-<li>Fitxer de configuració</li>
-<li>Eines gràfiques</li>
+<li>Configuració : <code>/etc/elasticsearch/elasticsearch.yml</code></li>
+<li>Port : <code>9200</code></li>
 </ul>
+<section id="funció" class="level2">
+<h2>Funció</h2>
+<p>Base de dades (emmagatzematge)</p>
+</section>
+<section id="index" class="level2">
+<h2>Index</h2>
+<p>Distribució de logs per indexs diaris</p>
+</section>
+<section id="eines-gràfiques" class="level2">
+<h2>Eines gràfiques</h2>
+<ul>
+<li><code>elastic-hq</code></li>
+<li><code>head</code></li>
+</ul>
+<figure>
+<img src="images/elasticsearchh.png" />
+</figure>
 <hr />
+</section>
 </section>
 <section id="kibana" class="level1">
 <h1>kibana</h1>
 <ul>
-<li>Fitxer de configuració</li>
+<li>Configuració : <code>/opt/kibana/config/kibana.yml</code></li>
+<li>Port : <code>5601</code></li>
 </ul>
+<section id="entorn-gràfic" class="level2">
+<h2>Entorn gràfic</h2>
+<ul>
+<li>Visualització</li>
+<li>Filtrat</li>
+<li>Gràfiques a temps real</li>
+</ul>
+<figure>
+<img src="images/kibana.png" />
+</figure>
 <hr />
+</section>
 </section>
 <section id="tecnologia-docker" class="level1">
 <h1>Tecnologia Docker</h1>
+<figure>
+<img src="images/docker.png" />
+</figure>
+</section>
+<section id="docker" class="level1">
+<h1>Docker</h1>
 <section id="idea" class="level2">
 <h2>Idea</h2>
+<ul>
+<li>Alliberar el host</li>
+<li>Funcionament de serveis automàtics</li>
+<li>Evitar problemes de compativilitat</li>
+</ul>
 </section>
 <section id="funcionament" class="level2">
 <h2>Funcionament</h2>
-<hr />
+<ul>
+<li>Imatges</li>
+<li>Contenidor</li>
+<li>Cooperació</li>
+</ul>
 </section>
-</section>
-<section id="dockerfile" class="level1">
-<h1>Dockerfile</h1>
-<section id="que-és" class="level2">
-<h2>Que és</h2>
-</section>
-<section id="edició-dockerfle" class="level2">
-<h2>Edició Dockerfle</h2>
+<section id="dockerfile" class="level2">
+<h2>Dockerfile</h2>
+<p>Creació d'una immatge personalitzada</p>
 </section>
 <section id="contenidor" class="level2">
 <h2>Contenidor</h2>
-</section>
-</section>
-<section id="prova" class="level1">
-<h1>prova</h1>
-<p>asñdfasñ fl kas asfñkasñf las asdfñasf ñas</p>
+<p><a href="https://github.com/jordii9/projecte/blob/master/docker/dockerfiles/script_docker.sh">creació</a></p>
 <hr />
 </section>
-<section id="prova-mama" class="level1">
-<h1>prova mama</h1>
-<p>alm aslkm</p>
 </section>
-<section id="eines-gràfiques" class="level1">
+<section id="eines-gràfiques-1" class="level1">
 <h1>Eines gràfiques</h1>
+<p>Elasticsearch</p>
+<ul>
+<li>localhost:9200/_plugin/hq/</li>
+<li>localhost:9200/_plugin/head/</li>
+</ul>
+<p>Kibana</p>
+<ul>
+<li>localhost:5601</li>
+</ul>
 <hr />
 </section>
-<section id="conclusio" class="level1">
-<h1>Conclusio</h1>
-<p>Adminitració de logs està en desenvolupament Moltes eines noves per gestionar-los La funció de tecnoligia docker</p>
+<section id="problemes-principals" class="level1">
+<h1>Problemes principals</h1>
+<ul>
+<li>Fitxer de configuració Logstash (plugin)</li>
+<li>Logstash container</li>
+<li>Volums i links</li>
+<li>Permisos dels fitxers</li>
+</ul>
+<hr />
+</section>
+<section id="conclusió" class="level1">
+<h1>Conclusió</h1>
+<ul>
+<li>Creació de Documentació</li>
+<li>Treballar amb l'entorn adient</li>
+<li>Tecnologia docker</li>
+<li>Creacó de presentacions html</li>
+</ul>
+</section>
+<section id="opinió-personal" class="level1">
+<h1>Opinió Personal</h1>
+<ul>
+<li>Treball amb github</li>
+<li>Desenvolupar una tasca diferent individualment</li>
+<li>Utilització de noves eines a més de les apreses durant el curs</li>
+</ul>
+</section>
+<section id="fi" class="level1">
+<h1>Fi</h1>
+<p>Gràcies per la vostra atenció</p>
 </section>
 </div>
 
@@ -143,7 +231,7 @@
     center: false,
 
   // available themes are in /css/theme
-      theme: Reveal.getQueryHash().theme || 'beige', 
+      theme: Reveal.getQueryHash().theme || 'night', 
   
   // default/cube/page/concave/zoom/linear/fade/none
       transition: Reveal.getQueryHash().transition || 'linear',
